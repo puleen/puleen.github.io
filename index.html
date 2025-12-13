@@ -1,9 +1,361 @@
 <!doctype html>
-<html>
-  <head>
-    <title>Puleen's Portal</title>
-  </head>
-  <body>
-    <p>Arriving December 1st.</p>
-  </body>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <title>Puleen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&family=Raleway:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      color: #1a1a1a;
+      background: linear-gradient(158deg, #ffffff 0%, #e8e8e8 100%);
+    }
+
+    .page {
+      margin: 0 auto;
+      padding: 10%;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .hero-main {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+      align-items: flex-start;
+    }
+
+    .avatar {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-title {
+      font-family: "Public Sans", sans-serif;
+      font-size: clamp(4rem, 12vw, 12rem);
+      margin: 0;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: -0.055em;
+      background: linear-gradient(135deg, #1a1a1a 0%, #666666 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      white-space: nowrap;
+    }
+
+    .hero-subtitle {
+      font-family: "Raleway", sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      margin: 0;
+      color: #666666;
+      line-height: 1.3;
+      padding-left: 12px;
+    }
+
+    .hero-icons {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-left: 24px;
+      flex-shrink: 0;
+    }
+
+    .hero-icons a {
+      display: inline-flex;
+      color: #666666;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .hero-icons a:hover {
+      color: #000000;
+    }
+
+    .hero-icons svg {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+      align-items: start;
+    }
+
+    .testimonial {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px 36px 40px;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .testimonial-card::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -14px;
+      border-width: 14px 14px 0 14px;
+      border-style: solid;
+      border-color: #ffffff transparent transparent transparent;
+    }
+
+    .testimonial-text {
+      font-family: "Raleway", sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      margin: 0;
+      line-height: 1.6;
+      color: #404040;
+    }
+
+    .testimonial-name {
+      margin-top: 32px;
+      font-weight: 600;
+      font-size: 18px;
+      color: #1a1a1a;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 1200px) {
+      .hero-title {
+        font-size: clamp(3.5rem, 10vw, 10rem);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-main {
+        flex-direction: row;
+        width: 100%;
+      }
+
+      .hero-title {
+        font-size: clamp(3.5rem, 10vw, 8rem);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(0.9rem, 2.2vw, 1.3rem);
+      }
+
+      .hero-icons {
+        margin-left: 0;
+        align-self: flex-end;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 32px 16px 48px;
+        gap: 40px;
+      }
+
+      .hero {
+        gap: 24px;
+      }
+
+      .hero-main {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .avatar {
+        width: 100px;
+        height: 100px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 13vw, 5rem);
+        letter-spacing: -0.05em;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+      }
+
+      .hero-icons {
+        align-self: flex-start;
+        gap: 20px;
+      }
+
+      .hero-icons svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .testimonial-card {
+        padding: 24px 20px 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: clamp(2rem, 12vw, 4rem);
+      }
+      
+      .avatar {
+        width: 90px;
+        height: 90px;
+      }
+
+      .hero-main {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-main">
+        <div class="avatar">
+          <img
+            src="/puleen-1-1020x1024.jpg"
+            alt="Puleen"
+          />
+        </div>
+        <div class="hero-content">
+          <h1 class="hero-title">Puleen Patel</h1>
+          <p class="hero-subtitle">Business & Technology Strategy, Delivery, and Account Executive | Financial Services & Insurance | Investor </p>
+        </div>
+      </div>
+
+      <nav class="hero-icons" aria-label="Puleen links">
+        <!-- Blog icon -->
+        <a href="https://www.puleen.ca/" target="_blank" title="Read Puleen's Blog">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="m 1.3739,6.3493 h 0.0707 C 2.5987,4.6624 4.0382,3.2783 5.8965,2.3597 11.5725,-0.446 18.7097,2.13 21.1593,7.9521 21.8328,9.5529 22.0509,11.2562 21.9311,12.9698 21.84,14.2736 21.4145,15.5718 20.8243,16.7331 20.1781,18.0046 19.2841,19.1507 18.1923,20.0782 16.9922,21.0978 15.6128,21.8766 14.0937,22.3278 12.4181,22.8255 10.6567,22.9334 8.9351,22.6272 7.2894,22.3344 5.7644,21.6631 4.4125,20.6948 3.6967,20.1821 3.0805,19.5311 2.3632,19.0328 c 0.1117,0.7136 1.0889,1.3353 1.6253,1.7691 1.8407,1.4886 3.9801,2.4905 6.3598,2.7715 6.5874,0.7778 13.0949,-3.9567 13.5613,-10.6733 C 24.3826,6.09 18.5065,-0.4681 11.3377,0.2047 8.1995,0.4992 5.4763,1.5263 3.2113,3.7707 2.5468,4.4292 1.5585,5.405 1.3739,6.3493 M 16.3549,19.3813 c -0.8757,0.0208 -1.7721,0.8237 -2.6146,1.1096 -1.8113,0.6146 -3.9219,0.5897 -5.7239,-0.0428 C 2.3794,18.4695 0.1286,11.632 3.7932,6.9068 4.4797,6.0216 5.3547,5.2661 6.3205,4.6909 8.3843,3.4617 10.9149,3.099 13.2456,3.7119 14.1949,3.9615 15.1789,4.7378 16.1429,4.7464 15.7584,4.0429 14.5357,3.5803 13.811,3.2971 11.2216,2.2855 8.4285,2.4264 5.8965,3.5216 -0.8403,6.4355 -1.4077,15.9987 4.5538,19.9617 c 1.5626,1.0387 3.4109,1.6496 5.2999,1.6496 2.1309,0 5.0582,-0.4819 6.5011,-2.2301 M 6.9564,13.8061 c 1.0369,0.8242 2.0533,1.2544 3.3919,1.2544 v -1.2544 c -0.5668,0 -1.0429,-0.0777 -1.5546,-0.3317 C 5.5525,11.8658 7.1371,6.9784 10.7017,7.4852 c 1.4588,0.2074 2.65,1.541 2.7496,2.9758 0.0741,1.0666 -0.9153,2.0921 0.5717,2.5785 0.3602,-0.5862 0.5779,-1.2034 0.6764,-1.8816 C 15.2982,7.0351 10.1005,4.7474 7.1005,7.3555 5.0117,9.1715 5.6845,12.6136 5.6845,15.0605 v 1.8816 c 0,0.1945 -0.0651,0.5569 0.1133,0.6949 0.3496,0.2704 1.0433,-0.1256 1.1362,-0.4861 0.2552,-0.9898 0.0225,-2.322 0.0225,-3.3449 M 13.1043,6.7674 c 0.2363,0.2494 0.6544,0.765 0.9921,0.8511 0.3636,0.0926 0.9403,-0.1585 1.3399,-0.1539 1.1275,0.0129 2.1942,0.7062 2.7338,1.6723 1.4951,2.6762 -1.725,5.8815 -4.4297,4.2455 C 12.914,12.8834 12.195,12.0043 12.1214,11.0185 12.0355,9.8694 12.9361,8.7757 11.479,8.2309 10.4517,10.4112 10.843,12.975 10.843,15.3393 v 1.6726 c 0,0.1804 -0.0536,0.4977 0.1133,0.625 0.35,0.2668 1.029,-0.134 1.128,-0.4859 0.2741,-0.9744 0.0306,-2.3325 0.0306,-3.3448 0.6645,0.5705 1.394,0.9882 2.2613,1.17 0.7246,0.1519 1.5512,0.1379 2.2613,-0.0793 0.6791,-0.2077 1.3167,-0.5459 1.837,-1.0273 0.4301,-0.398 0.8044,-0.9172 1.0282-1.4572 1.5837,-3.8216 -2.6718,-7.7819 -6.3984,-5.6449 z"
+            />
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/puleen" title="Puleen on LinkedIn" target="_blank"> 
+          <svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true">
+            <path
+              d="M416 32H32C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 32 480h384c17.7 0 32-14.5 32-32.3V64.3C448 46.5 433.7 32 416 32zM135.4 416H69V202.2h66.4V416zm-33.2-243c-21.2 0-38.4-17.3-38.4-38.5S81 96 102.2 96c21.3 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zM382.3 416h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.8 44.3 79.8 101.9V416z"
+            />
+          </svg>
+        </a>
+
+        <!-- Bluesky -->
+        <a href=" https://bsky.app/profile/puleen.bsky.social" title="Follow Puleen on BlueSky" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"
+              stroke-width="1"
+            />
+          </svg>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Testimonials -->
+    <section class="testimonials" aria-label="Testimonials">
+      <article class="testimonial">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            Our project together was a turning point in my career, it is where I
+            really started to develop into a consultant and also care about my
+            work. I honestly couldn't have done it without you, your mentorship,
+            your positivity and enthusiasm were what got us through the finish
+            line.
+          </p>
+        </div>
+        <div class="testimonial-name">Justin B</div>
+      </article>
+
+      <article class="testimonial">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            You've been an amazing leader, and your support for the entire
+            program, especially the people, was truly appreciated. I'll always
+            remember how you could break down complicated issues and make
+            everyone feel more at ease. Your leadership has been invaluable!
+          </p>
+        </div>
+        <div class="testimonial-name">Nav D</div>
+      </article>
+
+      <article class="testimonial">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            I just wanted to take a moment to say how truly grateful I am for
+            everything you've done for me. Your guidance, support and
+            encouragement have made such a meaningful difference in my career.
+            You've not only helped me grow as a professional but also inspired
+            me personally with your perspective and approach to challenges.
+          </p>
+        </div>
+        <div class="testimonial-name">Alex V</div>
+      </article>
+    </section>
+  </div>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"e6c031aa58ae44d68db13911d73aa6c6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
 </html>
